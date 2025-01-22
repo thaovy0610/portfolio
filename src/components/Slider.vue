@@ -53,7 +53,7 @@ export default {
         <div class="grid grid-cols-3 gap-3 justify-center w-[80%]">
             <button 
                 @click="prevCharacter"
-                class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800"
+                class="mx-auto bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800"
             > Previous 
             </button>
 
@@ -66,7 +66,7 @@ export default {
 
             <button 
                 @click="nextCharacter"
-                class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800"
+                class="mx-auto bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800"
             > Next 
             </button>
         </div>
