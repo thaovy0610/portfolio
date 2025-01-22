@@ -50,7 +50,7 @@ export default {
             {{ currentCharacter.name }}
         </p>
 
-        <div class="grid grid-cols-3 gap-3 justify-center w-[80%]">
+        <div class="flex justify-center w-[80%]">
             <button 
                 @click="prevCharacter"
                 class="mx-auto bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800"
