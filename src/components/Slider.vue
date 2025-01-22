@@ -1,52 +1,73 @@
 <script>
+export default {
+    data() {
+        return {
+            characters: [
+                {name: "Hit the books", image: "/src/assets/avatar/1.svg"},
+                {name: "Avocater", image: "/src/assets/avatar/2.svg"},
+                {name: "Projecter", image: "/src/assets/avatar/5.svg"},
+                {name: "Phone", image: "/src/assets/avatar/4.svg"}
+            ],
+            activeCharacter: null,
+            isPopupVisible: false
+        }
+    },
 
+    methods: {
+        showPopup(character) {
+            this.activeCharacter = character
+            this.isPopupVisible = true
+        },
+        closePopup() {
+            this.activeCharacter = null
+            this.isPopupVisible = false
+        }
+    }
+
+}
 </script>
 
 <template>
-
-<div id="controls-carousel" class="relative w-full" data-carousel="static">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-         <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/src/assets/avatar/1.svg" class="absolute block w-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="/src/assets/avatar/2.svg" class="absolute block w-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/src/assets/avatar/3.svg" class="absolute block w-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/src/assets/avatar/4.svg" class="absolute block w-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/src/assets/avatar/5.svg" class="absolute block w-200 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+<div>
+    <!-- Slider -->
+    <div id="character-slider" class="flex overflow-x-auto space-x-4 p-4">
+        <div 
+            v-for="character in characters"
+            :key="character.name"
+            @click="showPopup(character)"
+            class="cursor-pointer hover:scale-105 transition-transform duration-200"
+        >
+            <img   
+                :src="character.image"
+                :alt="character.name"
+                class="rounded-lg shadow-lg w-40 h-40 object-cover"
+            />
+            <p class="text-center mt-2 font-semibold text-gray-700">{{ character.name }}</p>
         </div>
     </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
 
+    <!-- Popup -->
+    <div 
+        v-if="isPopupVisible"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-content z-50"
+    >
+        <div class="bg-white rounded-lg p-6 shadow-lg max-w-md w-full">
+            <h2 class="text-2xl font-bold mb-4 text-center">{{ activeCharacter.name }}</h2>
+            <p class="text-gray-600 mb-6 text-center">{{ activeCharacter.info }}</p>
+            <img
+                :src="activeCharacter.image"
+                :alt="activeCharacter.name"
+                class="mx-auto rounded-lg shadow-md w-60 h-60 object-cover mb-4"
+            />
+            <button
+                @click="closePopup"
+                class="block mx-auto bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+</div>
 </template>
 
 <style>
