@@ -1,12 +1,16 @@
 <script>
+import img1 from '../assets/avatar/1.svg'
+import img2 from '../assets/avatar/2.svg'
+import img3 from '../assets/avatar/5.svg'
+import img4 from '../assets/avatar/4.svg'
 export default {
     data() {
         return {
             characters: [
-                {name: "Milestone Hunter", image: "/portfolio/src/assets/avatar/3.svg", info: "This is where I show some achievement"},
-                {name: "Identity Keeper", image: "/portfolio/src/assets/avatar/2.svg", info: "This is where I some kind of hobbies, and how those affect to me"},
-                {name: "Solo Maverick", image: "/portfolio/src/assets/avatar/5.svg", info: "This is where I show my personal project"},
-                {name: "The Connector", image: "/portfolio/src/assets/avatar/4.svg", info: "This is where you can contact me"}
+                {name: "Milestone Hunter", image: img1, info: "This is where I show some achievement"},
+                {name: "Identity Keeper", image: img2, info: "This is where I some kind of hobbies, and how those affect to me"},
+                {name: "Solo Maverick", image: img3, info: "This is where I show my personal project"},
+                {name: "The Connector", image: img4, info: "This is where you can contact me"}
             ],
             currentIndex: 0,
             isPopupVisible: false
