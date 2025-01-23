@@ -38,42 +38,35 @@ export default {
 </script>
 
 <template>
-<div class='flex flex-col item-center justify-center'>
+<div class='flex flex-col items-center justify-center'>
     <!-- Slider -->
-    <div class="relative w-full max-w-screen-lg justify-center">
+    <div class="flex w-full max-w-screen-lg items-center justify-center">
+        <button 
+            @click="prevCharacter"
+            class="mr-10 mt-2 bg-pink-300 text-white p-2 rounded-full hover:bg-pink-400"
+        > Previous 
+        </button>
         <img 
             :src="currentCharacter.image"
             :alt="currentCharacter.name"
             class="rounded-lg shadow-lg w-[80%] object-cover"
         />
-        <p class="text-center mt-2 font-semibold text-gray-700">
-            {{ currentCharacter.name }}
-        </p>
-
-        <div class="flex justify-center w-[80%]">
-            <button 
-                @click="prevCharacter"
-                class="mx-auto bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800"
-            > Previous 
-            </button>
-
-            <button 
-                @click="showPopup"
-                class="mx-auto mt-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
-            >
-            View Details
-            </button>
-
-            <button 
-                @click="nextCharacter"
-                class="mx-auto bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800"
-            > Next 
-            </button>
-        </div>
+        <button 
+            @click="nextCharacter"
+            class="ml-10 mt-2 bg-pink-300 text-white p-2 rounded-full hover:bg-pink-400"
+        > Next 
+        </button>
     </div>
 
-    <!-- Navigation -->
-    
+    <p class="text-center m-8 text-2xl font-semibold text-gray-700">
+            {{ currentCharacter.name }}
+    </p>
+
+    <button 
+        @click="showPopup"
+        class="mt-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+    > View Details
+    </button>
 
     <!-- Popup -->
     <div
