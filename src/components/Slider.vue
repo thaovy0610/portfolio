@@ -1,5 +1,5 @@
 <script>
-import img1 from '../assets/avatar/1.svg'
+import img1 from '../assets/avatar/3.svg'
 import img2 from '../assets/avatar/2.svg'
 import img3 from '../assets/avatar/5.svg'
 import img4 from '../assets/avatar/4.svg'
