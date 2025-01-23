@@ -27,7 +27,7 @@ export default {
             this.currentIndex = (this.currentIndex + 1) % this.characters.length
         },
         prevCharacter() {
-            this.currentIndex = (this.currentIndex - 1) % this.characters.length
+            this.currentIndex = Math.abs((this.currentIndex - 1) % this.characters.length)
         },
         showPopup(character) {
             this.activeCharacter = character
