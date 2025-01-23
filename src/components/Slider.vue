@@ -3,10 +3,10 @@ export default {
     data() {
         return {
             characters: [
-                {name: "Milestone Hunter", image: "/src/assets/avatar/3.svg", info: "This is where I show some achievement"},
-                {name: "Identity Keeper", image: "/src/assets/avatar/2.svg", info: "This is where I some kind of hobbies, and how those affect to me"},
-                {name: "Solo Maverick", image: "/src/assets/avatar/5.svg", info: "This is where I show my personal project"},
-                {name: "The Connector", image: "/src/assets/avatar/4.svg", info: "This is where you can contact me"}
+                {name: "Milestone Hunter", image: "/portfolio/src/assets/avatar/3.svg", info: "This is where I show some achievement"},
+                {name: "Identity Keeper", image: "/portfolio/src/assets/avatar/2.svg", info: "This is where I some kind of hobbies, and how those affect to me"},
+                {name: "Solo Maverick", image: "/portfolio/src/assets/avatar/5.svg", info: "This is where I show my personal project"},
+                {name: "The Connector", image: "/portfolio/src/assets/avatar/4.svg", info: "This is where you can contact me"}
             ],
             currentIndex: 0,
             isPopupVisible: false
