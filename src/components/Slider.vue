@@ -1,21 +1,23 @@
 <script>
-import img1 from '../assets/avatar/3.svg'
-import img2 from '../assets/avatar/2.svg'
-import img3 from '../assets/avatar/5.svg'
-import img4 from '../assets/avatar/4.svg'
+import hunter from '../assets/avatar/hunter.png'
+import keeper from '../assets/avatar/resume.png'
+import connector from '../assets/avatar/collector.png'
+import solo from '../assets/avatar/solo.png'
+
 export default {
     data() {
         return {
-            characters: [
-                {name: "Milestone Hunter", image: img1, info: "This is where I show some achievement"},
-                {name: "Identity Keeper", image: img2, info: "This is where I some kind of hobbies, and how those affect to me"},
-                {name: "Solo Maverick", image: img3, info: "This is where I show my personal project"},
-                {name: "The Connector", image: img4, info: "This is where you can contact me"}
-            ],
             currentIndex: 0,
+            characters: [
+                {name: "Milestone Hunter", image: hunter, info: "This is where I show some achievement"},
+                {name: "Identity Keeper", image: keeper, info: "This is where I some kind of hobbies, and how those affect to me"},
+                {name: "Solo Maverick", image: solo, info: "This is where I show my personal project"},
+                {name: "The Connector", image: connector, info: "This is where you can contact me"}
+            ],
             isPopupVisible: false
         }
     },
+
     computed: {
         currentCharacter() {
             return this.characters[this.currentIndex]
@@ -25,14 +27,11 @@ export default {
     methods: {
         nextCharacter() {
             this.currentIndex = (this.currentIndex + 1) % this.characters.length
+            console.log(this.currentIndex)
         },
         prevCharacter() {
-            if (this.currentIndex - 1 == -1) {
-                this.currentIndex = 3
-            } 
-            else {
-                this.currentIndex = (this.currentIndex - 1) % this.characters.length
-            }
+            this.currentIndex = (this.currentIndex - 1 + this.characters.length) % this.characters.length;
+            console.log(this.currentIndex)
         },
         showPopup(character) {
             this.activeCharacter = character
@@ -47,34 +46,51 @@ export default {
 </script>
 
 <template>
-<div class='flex flex-col items-center justify-center'>
+<div class='flex flex-col relative w-full max-w-screen-lg mx-auto overflow-hidden'>
     <!-- Slider -->
-    <div class="flex w-full max-w-screen-lg items-center justify-center">
-        <button 
-            @click="prevCharacter"
-            class="mr-10 mt-2 bg-pink-300 text-white p-2 rounded-full hover:bg-pink-400"
-        > Previous 
-        </button>
-        <img 
-            :src="currentCharacter.image"
-            :alt="currentCharacter.name"
-            class="rounded-lg shadow-lg w-[80%] object-cover"
-        />
-        <button 
-            @click="nextCharacter"
-            class="ml-10 mt-2 bg-pink-300 text-white p-2 rounded-full hover:bg-pink-400"
-        > Next 
-        </button>
+    <div class="mt-20 flex transition-transform duration-500 ease-in-out">
+        <div class="w-full flex flex-col items-center transition-all duration-500" v-for="(char, index) in characters"
+            :class="index == currentIndex ? 'scale-110 blur-0' : 'scale-90 blur-sm'">
+            <img 
+                class="drop-shadow-[0_35px_35px_rgba(255,255,25,0.25)] h-48 object-contain "
+                
+                :src="char.image" 
+                :alt="char.name">
+            <p class="text-center m-8 text-2xl font-semibold text-white mt-4">
+                {{ char.name }}
+            </p> 
+        </div>
     </div>
 
-    <p class="text-center m-8 text-2xl font-semibold text-gray-700">
-            {{ currentCharacter.name }}
-    </p>
+    <!-- Navigation buttons -->
+    <button 
+        @click="prevCharacter"
+        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
+    >  
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-3 h-3 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button 
+        @click="nextCharacter"
+        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
+    >   
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-3 h-3 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span> 
+    </button>
+    
 
     <button 
         @click="showPopup"
-        class="mt-2 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
-    > View Details
+        class="mx-auto text-white font-semibold bg-gradient-to-bl from-blue-400 to-indigo-600 py-2 px-6 rounded-lg hover:-translate-y-1 hover:scale-105 transition duration-300 ease-in-out"
+    > Show power
     </button>
 
     <!-- Popup -->
@@ -100,8 +116,14 @@ export default {
 
         </div>
     </div>
-</div>
+</div> 
 </template>
 
 <style>
+    body {
+        background-color: black;
+    }
+    .transition-transform {
+        transition: transform 0.5s ease-in-out;
+    }
 </style>
