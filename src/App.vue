@@ -1,11 +1,11 @@
 <script setup>
-import NavBar from './components/NavBar.vue'
 import Slider from './components/Slider.vue'
+import About from './components/About.vue'
 
 </script>
 
 <template>
-  <NavBar />
+  <About />  
   <Slider />
 </template>
 
