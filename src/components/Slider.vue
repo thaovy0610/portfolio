@@ -108,10 +108,18 @@ export default {
 </template>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
     body {
         background-color: black;
     }
     .transition-transform {
         transition: transform 0.5s ease-in-out;
+    }
+
+    .char-name {
+        font-family: "Irish Grover", system-ui;
+        font-weight: 400;
+        font-style: normal;
     }
 </style>
