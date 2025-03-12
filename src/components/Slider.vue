@@ -1,19 +1,16 @@
 <script>
-import hunter from '../assets/avatar/hunter.png'
-import keeper from '../assets/avatar/resume.png'
-import connector from '../assets/avatar/collector.png'
-import solo from '../assets/avatar/solo.png'
+import { characters } from '../data/character'
+import CharacterDetails from './CharacterDetail.vue'
+import { ref } from 'vue';
 
 export default {
+    components: {
+        CharacterDetails
+    },
     data() {
         return {
             currentIndex: 0,
-            characters: [
-                {name: "Milestone Hunter", image: hunter, info: "This is where I show some achievement"},
-                {name: "Identity Keeper", image: keeper, info: "This is where I some kind of hobbies, and how those affect to me"},
-                {name: "Solo Maverick", image: solo, info: "This is where I show my personal project"},
-                {name: "The Connector", image: connector, info: "This is where you can contact me"}
-            ],
+            characters,
             isPopupVisible: false
         }
     },
@@ -54,7 +51,7 @@ export default {
             <img 
                 class="drop-shadow-[0_35px_35px_rgba(255,255,25,0.25)] h-48 object-contain "
                 
-                :src="char.image" 
+                :src="char.imagePath" 
                 :alt="char.name">
             <p class="text-center m-8 text-2xl font-semibold text-white mt-4">
                 {{ char.name }}
@@ -94,7 +91,9 @@ export default {
     </button>
 
     <!-- Popup -->
-    <div
+    <CharacterDetails v-if="isPopupVisible" :character="currentCharacter" @close="closePopup"/>
+    
+    <!-- <div
         v-if="isPopupVisible"
         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
     >
@@ -102,7 +101,7 @@ export default {
             <h2 class="text-2xl font-bold mb-4 text-center">{{ currentCharacter.name }}</h2>
             <p class="text-gray-600 mb-6 text-center">{{ currentCharacter.info }}</p>
             <img 
-                :src="currentCharacter.image"
+                :src="currentCharacter.imagePath"
                 :alt="currentCharacter.name"
                 class="mx-auto rounded-lg shadow-md w-60 h-60 object-cover mb-4"
             >
@@ -115,7 +114,7 @@ export default {
             </button>
 
         </div>
-    </div>
+    </div> -->
 </div> 
 </template>
 
