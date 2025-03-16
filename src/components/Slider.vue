@@ -30,29 +30,25 @@ export default {
             this.currentIndex = (this.currentIndex - 1 + this.characters.length) % this.characters.length;
             console.log(this.currentIndex)
         },
-        showPopup(character) {
-            this.activeCharacter = character
-            this.isPopupVisible = true
-        },
-        closePopup() {
-            this.activeCharacter = null
-            this.isPopupVisible = false
+        selectCharacter(index) {
+            this.currentIndex = index
         }
     }
 }
 </script>
 
 <template>
-<div class='flex flex-col relative w-full max-w-screen-lg mx-auto overflow-hidden'>
+<div class='relative flex flex-col w-full max-w-screen-lg mx-auto'>
     <!-- Slider -->
     <div class="mt-20 flex transition-transform duration-500 ease-in-out">
-        <div class="w-full flex flex-col items-center transition-all duration-500" v-for="(char, index) in characters"
+        <div class="max-w-full flex flex-col items-center justify-center mx-auto transition-all duration-500" v-for="(char, index) in characters"
             :class="index == currentIndex ? 'scale-110 blur-0' : 'scale-90 blur-sm'">
             <img 
                 class="drop-shadow-[0_35px_35px_rgba(255,255,25,0.25)] h-48 object-contain "
                 
                 :src="char.imagePath" 
-                :alt="char.name">
+                :alt="char.name"
+                @click="selectCharacter(index)">
             <p class="text-center m-8 text-2xl font-semibold text-white mt-4">
                 {{ char.name }}
             </p> 
@@ -62,7 +58,7 @@ export default {
     <!-- Navigation buttons -->
     <button 
         @click="prevCharacter"
-        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
+        class="absolute -start-10 top-40 z-[100] flex h-full cursor-pointer group focus:outline-none"
     >  
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-3 h-3 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -73,7 +69,7 @@ export default {
     </button>
     <button 
         @click="nextCharacter"
-        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none"
+        class="absolute top-40 -end-10 z-100 flex h-full cursor-pointer group focus:outline-none"
     >   
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-3 h-3 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -82,16 +78,9 @@ export default {
             <span class="sr-only">Next</span>
         </span> 
     </button>
-    
-
-    <button 
-        @click="showPopup"
-        class="mx-auto text-white font-semibold bg-gradient-to-bl from-blue-400 to-indigo-600 py-2 px-6 rounded-lg hover:-translate-y-1 hover:scale-105 transition duration-300 ease-in-out"
-    > Show power
-    </button>
 
     <!-- Popup -->
-    <CharacterDetails v-if="isPopupVisible" :character="currentCharacter" @close="closePopup"/>
+    <CharacterDetails :character="currentCharacter" @close="closePopup"/>
     
     <!-- <div
         v-if="isPopupVisible"
