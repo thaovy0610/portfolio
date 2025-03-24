@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="h-screen my-10 ml-10 flex flex-col relative max-w-screen overflow-hidden text-wrap flex-wrap">
+    <div class="h-full my-10 ml-10 flex flex-col relative max-w-screen overflow-hidden text-wrap flex-wrap">
         <div class="flex justify-start">
             <h1 class="p-2 z-30 text-4xl sm:text-6xl md:text-8xl lg:text-[9rem] font-semibold text-amber-50 animate-header-reveal ease-in-out transition-discrete duration-500">Welcome to</h1>
         </div>

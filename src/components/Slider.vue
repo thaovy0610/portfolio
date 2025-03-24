@@ -38,9 +38,12 @@ export default {
 </script>
 
 <template>
-<div class='relative flex flex-col w-full max-w-screen-lg mx-auto'>
+<hr class="mt-20 h-px bg-gray-50/25 border-0 dark:bg-gray-700 max-w-screen-xl mx-auto">
+<div class='relative flex flex-col h-full w-full max-w-screen-s md:max-w-screen-lg mx-auto flex-wrap'>
+    <h1 class="hover:-translate-y-2 duration-500 ease-in-out mt-10 text-amber-50 font-semibold text-4xl md:text-6xl mx-auto">My influences</h1>
+
     <!-- Slider -->
-    <div class="mt-20 flex transition-transform duration-500 ease-in-out">
+    <div class="mt-20 flex transition-transform duration-500 ease-in-out flex-wrap">
         <div class="max-w-full flex flex-col items-center justify-center mx-auto transition-all duration-500" v-for="(char, index) in characters"
             :class="index == currentIndex ? 'scale-110 blur-0' : 'scale-90 blur-sm'">
             <img 
@@ -82,28 +85,6 @@ export default {
     <!-- Popup -->
     <CharacterDetails :character="currentCharacter" @close="closePopup"/>
     
-    <!-- <div
-        v-if="isPopupVisible"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-    >
-        <div class="bg-white rounded-lg p-6 shadow-lg max-w-md w-full">
-            <h2 class="text-2xl font-bold mb-4 text-center">{{ currentCharacter.name }}</h2>
-            <p class="text-gray-600 mb-6 text-center">{{ currentCharacter.info }}</p>
-            <img 
-                :src="currentCharacter.imagePath"
-                :alt="currentCharacter.name"
-                class="mx-auto rounded-lg shadow-md w-60 h-60 object-cover mb-4"
-            >
-        
-            <button 
-                @click="closePopup"
-                class="block mx-auto bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700"
-            >
-            Close
-            </button>
-
-        </div>
-    </div> -->
 </div> 
 </template>
 
