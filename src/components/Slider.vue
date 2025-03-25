@@ -61,7 +61,7 @@ export default {
     <!-- Navigation buttons -->
     <button 
         @click="prevCharacter"
-        class="absolute -start-10 top-40 z-[100] flex h-full cursor-pointer group focus:outline-none"
+        class="absolute top-60 z-100 flex cursor-pointer group focus:outline-none"
     >  
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-3 h-3 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -72,7 +72,7 @@ export default {
     </button>
     <button 
         @click="nextCharacter"
-        class="absolute top-40 -end-10 z-100 flex h-full cursor-pointer group focus:outline-none"
+        class="absolute top-60 end-0 z-100 flex cursor-pointer group focus:outline-none"
     >   
         <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg class="w-3 h-3 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
