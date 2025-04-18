@@ -1,17 +1,9 @@
 <script setup>
-import NavBar from './components/NavBar.vue'
-import Intro from './components/Intro.vue'
-import Slider from './components/Slider.vue'
-import Footer from './components/Footer.vue'
-import About from './components/About.vue'
-
+import Home from './components/Home.vue'
 </script>
 
 <template>
-  <NavBar />
-  <Intro />
-  <Slider />
-  <Footer />
+  <Home />
 </template>
 
 <style scoped>

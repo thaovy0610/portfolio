@@ -20,11 +20,11 @@
             </div>
             <!-- <img src="../assets/avatar/resume.png" class="basis-1/3 h-48 object-contain mx-auto animate-bounce"> -->
         </div>
-        <button 
+        <a  href="#slider"
             class="border-2 border-purple-200 text-amber-50 rounded-full font-light text-l md:text-2xl mx-auto p-4 mt-10
                     hover:bg-purple-200 hover:text-stone-950 hover:-translate-y-5 ease-in-out duration-300">
             Explore below
-        </button>
+        </a>
     </div>
 </template>
 
