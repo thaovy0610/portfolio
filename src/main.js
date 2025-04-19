@@ -14,7 +14,7 @@ import { faTwitter, faGithubSquare, faLinkedin, faFacebookSquare } from '@fortaw
 
 /* add icons to the library */
 library.add(faPhone, faEnvelope, faTwitter, faGithubSquare, faLinkedin, faFacebookSquare )
- 
+
 const pinia = createPinia()
 
 createApp(App)
