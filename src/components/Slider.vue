@@ -38,8 +38,8 @@ export default {
 </script>
 
 <template>
-<hr class="mt-20 h-px bg-gray-50/25 border-0 dark:bg-gray-700 max-w-screen-xl mx-auto">
-<div class='relative flex flex-col h-full w-full max-w-screen-s md:max-w-screen-lg mx-auto flex-wrap'>
+<hr class="h-px bg-gray-50/25 border-0 dark:bg-gray-700 max-w-screen-xl mx-auto">
+<div class='mt-10 relative flex flex-col h-full w-full max-w-screen-s md:max-w-screen-lg mx-auto flex-wrap'>
     <h1 class="hover:-translate-y-2 duration-500 ease-in-out mt-10 text-amber-50 font-semibold text-4xl md:text-6xl mx-auto">My influences</h1>
 
     <!-- Slider -->
@@ -47,7 +47,7 @@ export default {
         <div class="max-w-full flex flex-col items-center justify-center mx-auto transition-all duration-500" v-for="(char, index) in characters"
             :class="index == currentIndex ? 'scale-110 blur-0' : 'scale-90 blur-sm'">
             <img 
-                class="drop-shadow-[0_35px_35px_rgba(255,255,25,0.25)] h-48 object-contain "
+                class="drop-shadow-[0_35px_35px_rgba(255,255,25,0.25)] h-48 object-contain"
                 
                 :src="char.imagePath" 
                 :alt="char.name"

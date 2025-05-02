@@ -5,3 +5,26 @@
 html {
     scroll-behavior: smooth;
 }
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1230px;
+  }
+}
+
+/* Intro
+------------------------------*/
+
+
+.outer-ring {
+  @apply absolute inset-0 -top-[10%] -left-[10%] w-[120%] h-[120%] border-[6px] lg:border-[10px] border-sky-100/70 border-t-transparent border-l-transparent rounded-full animate-spin-clockwise
+}
+
+.inner-ring {
+  @apply absolute w-[100%] h-[100%] border-[3px] lg:border-[7px] border-sky-200/50 border-t-transparent border-l-transparent rounded-full animate-spin-counterclockwise
+}
+
+.container-intro-img {
+  @apply absolute top-1/2 left-1/2 w-[80%] h-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden shadow-blue-300/70 shadow-[0_0_30px] shadow-2xl
+}
+/* Buttons
+------------------------------*/

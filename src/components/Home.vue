@@ -8,11 +8,11 @@ import Footer from './Footer.vue';
 <template>
   <div id="home">
     <NavBar />
-    <div id="about" class="scroll-smooth">
+    <div id="about" class="scroll-smooth scroll-mt-6">
       <Intro />
     </div>
 
-    <div id="slider" class="scroll-smooth">
+    <div id="slider" class="scroll-smooth scroll-mt-6">
       <Slider />
     </div>
     <Footer />

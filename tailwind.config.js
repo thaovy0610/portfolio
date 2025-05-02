@@ -11,7 +11,9 @@ export default {
         'header-reveal': 'header-reveal 2s ease-in-out forwards',
         'rotate': 'rotate 5s linear forwards',
         'text-reveal': 'text-reveal 2s ease-in-out forwards',
-        'bounce': 'bounce 2s ease forwards'
+        'spin-clockwise': 'spin-clockwise 5s infinite linear',
+        'spin-counterclockwise': 'spin-counterclockwise 5.2s infinite linear',
+        'cursor-blink': 'cursor-blink 1s infinite'
       },
       keyframes: {
         'header-reveal': {
@@ -27,14 +29,18 @@ export default {
             transform: 'rotateX(540deg)'
           }
         },
-        'bounce': {
-          '0%': { transform: 'translateY(0)' },
-          '20%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(0)' },
-          '40%': {transform: 'translateY(-30px)'},
-	        '60%': {transform: 'translateY(-15px)'},
-          '80%': { transform: 'translateY(0)' },
-          '100%': { transform: 'translateY(0)' },
+        'spin-clockwise': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'spin-counterclockwise': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(-360deg)' },
+        },
+        'cursor-blink': {
+          '49%': { 'background-color': '#fff' },
+          '50%': { 'background-color': 'transparent' },
+          '99%': { 'background-color': 'transparent' },
         }
       },
     },

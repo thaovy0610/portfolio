@@ -1,35 +1,101 @@
 <script>
+export default {
+    data: () => {
+        return {
+            typeValue: '',
+            typeStatus: false,
+            typeArray: ['Developer', 'Tinkerer', 'Builder'],
+            typingSpeed: 200,
+            erasingSpeed: 200,
+            newTextDelay: 2000,
+            typeArrayIndex: 0,
+            charIndex: 0
+        }
+    },
+    methods: {
+        typeText() {
+            if (this.charIndex < this.typeArray[this.typeArrayIndex].length) {
+                if (!this.typeStatus) this.typeStatus = true 
+
+                this.typeValue += this.typeArray[this.typeArrayIndex][this.charIndex]
+                this.charIndex += 1;
+
+                setTimeout(this.typeText, this.typingSpeed);
+            } else {
+                this.typeStatus = false
+                setTimeout(this.eraseText, this.erasingSpeed + 100)
+            }
+        },
+        eraseText() {
+            if (this.charIndex > 0) {
+                if (!this.typeStatus) this.typeStatus = true 
+
+                this.typeValue = this.typeArray[this.typeArrayIndex].substring(0, this.charIndex - 1)
+                this.charIndex -= 1
+                setTimeout(this.eraseText, this.erasingSpeed)
+            } else {
+                this.typeStatus = false
+                this.typeArrayIndex = (this.typeArrayIndex + 1) % this.typeArray.length
+                setTimeout(this.typeText, this.typingSpeed + 500)
+            }
+        }
+    },
+    created() {
+        setTimeout(this.typeText, this.newTextDelay + 100)
+    }
+}
 </script>
 
 <template>
-    <div class="h-full my-10 ml-10 flex flex-col relative max-w-screen overflow-hidden text-wrap flex-wrap">
-        <div class="flex justify-start">
-            <h1 class="p-2 z-30 text-6xl md:text-8xl lg:text-[9rem] font-semibold text-amber-50 animate-header-reveal ease-in-out transition-discrete duration-500">Welcome to</h1>
-        </div>
-        <div class="flex justify-end">
-            <h1 class="mr-10 p-2 z-30 text-6xl md:text-8xl lg:text-[9rem] font-semibold text-amber-50 animate-header-reveal transition-discrete duration-100">my portfolio!</h1>
-        </div>
-        <div class="flex flex-row mt-10 items-center">
-            <div class="flex flex-col">
-                <p class="leading-10 p-2 mt-4 mb-2 animate-text-reveal duration-300 text-l md:text-xl font-light text-amber-50">My name is Vy, I'm an enthusiasm person who can work independently in busy environments and also perform within a team setting. 
-                With vision <span class="bg-sky-200 py-1 px-2 rounded-xl text-stone-950 whitespace-nowrap">Transforming innovative ideas into impactful IT solutions</span> I am willing and eager to grow more to bring best value to any project I participate.</p>
-                <p class="leading-10 p-2 my-2 animate-text-reveal duration-300 text-l md:text-xl font-light text-amber-50"> 
-                    In the journey to achieve knowledge and build a successful IT career, I've been guided by a few key influences. 
-                    Each of them have distinct values and mission in contributing to my professional identity. 
-                </p>
+    <div class="py-20 sm:py-40 mx-auto px-4 sm:px-6 md:px-5 flex flex-col md:flex-row relative max-w-screen text-balance flex-wrap justify-evenly items-center gap-6 md:gap-10">
+        <!-- Intro text -->
+        <div class="md:w-1/2 px-2 text-center md:text-left mb-12">
+            <h1 class="md:text-lg lg:text-xl font-medium text-amber-50 transition duration-500">Great to see you here &#9995; My name is Vy</h1>
+            <div class="flex flex-col leading-10 text-amber-50 font-light duration-300">
+                <div class="flex flex-col my-6">
+                    <h1 class="text-cente md:text-left text-4xl md:text-5xl xl:text-7xl font-bold"> I'm a
+                        <span class="typed-text text-blue-300">{{ typeValue }}</span>
+                        <span 
+                            class="w-2 animate-cursor-blink inline-block"
+                            :class="{'typing': typeStatus}"
+                        >
+                            &nbsp;
+                        </span>
+                    </h1>
+                    <p class="text-white/80 mt-3 text-sm md:text-md lg:text-lg">
+                        Full-stack Developer | AI Builder | Lifelong Learner
+                    </p>
+                </div>
+                <a href="#slider"
+                    class="mx-auto md:mx-0 md:text-md lg:text-xl items-center border-2 border-blue-200 text-amber-50 rounded-full font-light px-4 py-1.5 text-base w-fit 
+                            transition duration-300 hover:shadow-[0_0_10px_2px_rgba(216,180,254,0.7)] hover:shadow-blue-200">
+                    Explore below
+                </a>
             </div>
-            <!-- <img src="../assets/avatar/resume.png" class="basis-1/3 h-48 object-contain mx-auto animate-bounce"> -->
+            
         </div>
-        <a  href="#slider"
-            class="border-2 border-purple-200 text-amber-50 rounded-full font-light text-l md:text-2xl mx-auto p-4 mt-10
-                    hover:bg-purple-200 hover:text-stone-950 hover:-translate-y-5 ease-in-out duration-300">
-            Explore below
-        </a>
+        <!-- Intro Image -->
+        <div class="relative w-80 md:mr-5 lg:w-96 lg:mr-10 xl:mr-20 xl:w-[28rem] aspect-square transition-all duration-500 ease-in-out">
+            <!-- Outer spinning ring -->
+            <div class="outer-ring"></div>
+
+            <!-- Inner spinning ring -->
+            <div class="inner-ring"></div>
+
+            <!-- Centered image -->
+            <div class="absolute top-1/2 left-1/2 w-[80%] h-[80%] transform -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden shadow-blue-300/70 shadow-[0_0_30px] shadow-2xl">
+                <img src="../assets/avatar/intro.jpg" alt="avatar" class="w-full h-full object-cover rounded-full"/>
+            </div>
+        </div>
     </div>
 </template>
 
 <style>
     body {
         background: #0e100f;
+    }
+
+    span.cursor.typing {
+        animation: none;
     }
 </style>
