@@ -47,8 +47,8 @@ export default {
 </script>
 
 <template>
-    <div class="py-20 sm:py-20 md:py-40 mx-auto px-4 sm:px-6 md:px-5 flex flex-col md:flex-row relative max-w-screen text-balance flex-wrap justify-evenly items-center gap-6 md:gap-10">
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px]
+    <div class="pt-40 pb-10 sm:pt-40 md:pt-60 md:pb-40 mx-auto px-4 sm:px-6 md:px-5 flex flex-col md:flex-row relative max-w-screen text-balance flex-wrap justify-evenly items-center gap-6 md:gap-10">
+        <div class="absolute top-10 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px]
             bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-200
             rounded-full blur-[120px] opacity-20 z-0 overflow-hidden">
         </div>
