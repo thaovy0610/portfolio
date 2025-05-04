@@ -26,5 +26,9 @@ html {
 .container-intro-img {
   @apply absolute top-1/2 left-1/2 w-[80%] h-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden shadow-blue-300/70 shadow-[0_0_30px] shadow-2xl
 }
-/* Buttons
+/* About
 ------------------------------*/
+.char-ele {
+  @apply w-fit h-16 border-l-2 border-violet-200 flex items-center text-center text-amber-50 font-semibold px-4 py-1.5 text-xl 
+          hover:bg-indigo-100 hover:text-stone-900 hover:rounded-lg transform duration-300 ease-in-out
+}
